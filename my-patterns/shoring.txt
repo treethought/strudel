@@ -1,0 +1,55 @@
+await samples('github:tidalcycles/Dirt-Samples/master')
+await samples('shabda/speech:shoring_up_success:6')
+await samples('shabda/speech/fr-FR/f:shoring_up_success:7')
+await samples('shabda:bass:4,hihat:4,rimshot:2,hip:4,sing:6')
+
+
+stack (
+    n("0 . 1 2 ~ 5*3")
+    .chord("<D7 Cm E>")
+    .mode("below:d4")
+    .voicing()
+    .s("[gm_voice_oohs, kalimba]")
+    .every(2, jux(ply(3)))
+    .room(0.7)
+    .roomlp(1000)
+  
+    .early("1/4").s("gm_fretless_bass").n(2).struct("t(8, 12, <3 6 2 7>)")
+    .struct("t(3, 12)")
+    .sometimes(x=>x.ply("<8*7 3>").gain("0.5 0.6"))
+    .clip(0.4)
+    .fast(2)
+  
+  ,
+  stack(
+    s("hc(9, 12)").jux(rev).n("0 1").clip(0.3).gain("0.3 0.4 0.2 0.5 0.4"),
+    s("bd(4, 6)").off("0.125", x=>x.s("pink").clip(0.2))
+  )
+  .rarely(x=>x.ply("<2*7 3>").gain("0.5 0.6"))
+  .struct("t(10, 12)")
+  .scope()
+  
+  ,
+  s("shoring_up_success")
+  .fit()
+  // .every(2, jux())
+  // .jux(slice(8, "0 1 2 3 0 . [2 3 4*9] 4*7 5 6"))
+  // .jux(slice(8, "0 7 4 5 6 2 1"))
+  // .slice(8, "0 7 4 5 6 2 1")
+  // .room(0.7)
+  // .roomsize("0 .. 0.9")
+  .delay("0.8:0.125:0.7")
+  .slow(4)
+  .striate(16)
+  // .struct("t(2, 12)")
+  .clip(1)
+  // .every(3, x=>x.s("bd"))
+  .hush()
+  
+  // .clip(0.8)
+  
+  // .room("0 .. 1")
+    
+)
+// .hush()
+
